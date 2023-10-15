@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ysbc.front.dao.BoardDAO">
+ 	<select id="getBoardList" resultType="BoardDTO"> 
+	 	SELECT * 
+	 	FROM BOARD 
+	 	ORDER BY BOARDSEQ DESC
+	</select>
+
+<insert id="insertBoard" parameterType="BoardDTO">
+    <selectKey keyProperty="boardSeq" resultType="java.lang.Integer" order="BEFORE">
+        select BOARD_SEQ.NEXTVAL from dual
+    </selectKey>
+    
+	INSERT INTO BOARD
+	    (
+	        BOARDSEQ
+	        ,BOARDTITLE
+			,BOARDCONTENT
+			,BOARDWRITER
+			,BOARDREGDATE
+	    )
+	VALUES
+	    (
+	        #{boardSeq}
+	        ,#{boardTitle}
+	        ,#{boardContent}
+	        ,#{boardWriter}
+	        ,SYSDATE
+	    )
+</insert>
+
+</mapper>
+
