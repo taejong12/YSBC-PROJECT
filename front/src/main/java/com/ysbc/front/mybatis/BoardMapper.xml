@@ -5,7 +5,7 @@
 <mapper namespace="com.ysbc.front.dao.BoardDAO">
  	<select id="getBoardList" resultType="BoardDTO"> 
 	 	SELECT * 
-	 	FROM BOARD 
+	 	FROM BOARD1 
 	 	ORDER BY BOARDSEQ DESC
 	</select>
 
@@ -14,7 +14,7 @@
         select BOARD_SEQ.NEXTVAL from dual
     </selectKey>
     
-	INSERT INTO BOARD
+	INSERT INTO BOARD1
 	    (
 	        BOARDSEQ
 	        ,BOARDTITLE
